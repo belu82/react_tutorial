@@ -29,9 +29,6 @@ class App extends React.Component{
     }
 
     
-    
-
-    
 
     componentDidUpdate(){
         console.log(this.state.order);
@@ -75,7 +72,8 @@ class App extends React.Component{
         this.setState({fishes});
     
       }
-      
+
+     
     addToOrder = (key) => {
         //tak a copy of state
         const order = {...this.state.order};
@@ -84,6 +82,14 @@ class App extends React.Component{
 
         //setState to update our state object
         this.setState({order});
+    }
+
+    removeFromOrder = (key) => {
+        const order = {...this.state.order};
+        //order[key] = null;
+        delete order[key];
+        this.setState({order});
+
     }
 
     loadSampleFishes = () => {
@@ -102,8 +108,10 @@ class App extends React.Component{
 
                     </ul>
                 </div>
-              <Order fishes={this.state.fishes} order={this.state.order}/>
-              <Inventory addFish = {this.addFish} updateFish={this.updateFish} loadSampleFishes = {this.loadSampleFishes} fishes={this.state.fishes}/>
+              <Order fishes={this.state.fishes} order={this.state.order} removeFromOrder={this.removeFromOrder}/>
+              <Inventory addFish = {this.addFish} updateFish={this.updateFish}
+                deleteFish={this.deleteFish} 
+               loadSampleFishes = {this.loadSampleFishes} fishes={this.state.fishes}/>
             </div>
         );
     }
