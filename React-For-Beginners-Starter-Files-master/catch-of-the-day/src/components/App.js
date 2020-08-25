@@ -4,13 +4,28 @@ import Order from "./Order";
 import Inventory from "./Inventory";
 import sampleFishes from "../sample-fishes";
 import Fish from "./Fish";
-
+import base from "../base";
 
 class App extends React.Component{
     state= {
         fishes: {},
         order: {}
     };
+
+    //mirror database
+
+    componentDidMount(){
+        const {params} = this.props.match;
+        this.ref = base.syncState(`${params.storeId}`,{
+            context :this, 
+            state: 'fishes'
+        });
+    }
+
+    //unmount the database
+    componentWillUnmount(){
+        base.removeBinding(this.ref);
+    }
 
     addFish = fish => {
         //console.log("Adding fishsisihdfihiashsdf");
