@@ -56,6 +56,8 @@ class App extends React.Component {
     this.setState({ fishes });
   };
 
+
+
   loadSampleFishes = () => {
     this.setState({ fishes: sampleFishes });
   };
