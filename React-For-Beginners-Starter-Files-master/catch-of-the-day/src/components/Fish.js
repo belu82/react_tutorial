@@ -1,6 +1,6 @@
 import React from 'react';
-import {formatPrice} from "../helpers";
 import PropTypes from "prop-types";
+import {formatPrice} from "../helpers";
 
 
 class Fish extends React.Component{
@@ -15,7 +15,9 @@ class Fish extends React.Component{
             status: PropTypes.string
 
         }),
-        addToOrder: PropTypes.func
+        addToOrder: PropTypes.func,
+        index: PropTypes.string
+
 
     };
 
