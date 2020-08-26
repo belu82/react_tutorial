@@ -1,6 +1,6 @@
 import React from "react";
 import { formatPrice } from "../helpers";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 class Order extends React.Component {
   renderOrder = key => {
@@ -25,14 +25,14 @@ class Order extends React.Component {
       );
     }
     return (
-      <CSSTransition {...transitionOptions}>
+      <CSSTransition {...transitionOptions}> 
         <li key={key}>
           <span>
             <TransitionGroup component="span" className="count">
               <CSSTransition
                 classNames="count"
                 key={count}
-                timeout={{ enter: 500, exit: 500 }}
+                timeout={{ enter: 250, exit: 250 }}
               >
                 <span>{count}</span>
               </CSSTransition>

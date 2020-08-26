@@ -6,8 +6,14 @@ import sampleFishes from "../sample-fishes";
 import Fish from "./Fish";
 import base from "../base";
 //import fishes from "../sample-fishes";
+import PropTypes from "prop-types";
+
 
 class App extends React.Component{
+    static propTypes = {
+        match: PropTypes.object
+    };
+     
     state= {
         fishes: {},
         order: {}
@@ -108,10 +114,15 @@ class App extends React.Component{
 
                     </ul>
                 </div>
-              <Order fishes={this.state.fishes} order={this.state.order} removeFromOrder={this.removeFromOrder}/>
-              <Inventory addFish = {this.addFish} updateFish={this.updateFish}
-                deleteFish={this.deleteFish} 
-               loadSampleFishes = {this.loadSampleFishes} fishes={this.state.fishes}/>
+              <Order fishes={this.state.fishes} order={this.state.order} />
+              <Inventory 
+                    addFish = {this.addFish} 
+                    updateFish={this.updateFish}
+                    deleteFish={this.deleteFish} 
+                    loadSampleFishes = {this.loadSampleFishes} fishes={this.state.fishes}
+                    //az authentikációhoz
+                    storeId={this.props.match.params.storeId}
+                    />
             </div>
         );
     }
